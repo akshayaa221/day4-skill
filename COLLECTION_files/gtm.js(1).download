@@ -1,0 +1,723 @@
+/*******************************************************/
+/*                    CONSTANTS                        */
+/*******************************************************/
+var LOG_ALL = false;
+var LOG_ACTUAL_USED_EVENTS = false;
+var LOG_GTM = false;
+var currentScreen = '';
+var stepsCounter = 0;
+
+/*******************************************************/
+/*                   LOG FUNCTIONS                     */
+/*******************************************************/
+function GTMLog(type, eventType, text, anyObject) {
+
+    // Only if flag is true
+    if (LOG_GTM) {
+        if ((typeof anyObject !== 'undefined') && anyObject !== null) {
+            console.log('%c[%s] %s... %c(%s)', 'font-weight: bold;color:green;font-size:16px', type.toUpperCase(), text, 'font-weight: normal;color:#aaa;font-size:1em', eventType);
+            console.log('%cSent to GTM:  %o', 'font-weight: bold', anyObject);
+        } else {
+            console.log('%c[%s] %s... %c(%s)', 'font-weight: bold;color:#DDD;font-size:16px', type.toUpperCase(), text, 'font-weight: normal;color:#aaa;font-size:1em', eventType);
+        }
+    }
+}
+function logEvents(eventName, methodName, logEvents) {
+
+    if (methodName && methodName === 'gscounters.sendReport') {
+        return;
+    }
+
+    if (logEvents) {
+        if (methodName) {
+            console.info('%cGLOBAL CONFIG - %cEvent Name: %c' + eventName + ', %cMethod Name: %c' + methodName, 'font-weight: bold;', 'font-weight: normal;', 'font-weight:bold;color:red;', 'font-weight: normal;color:black;', 'font-weight: bold;color:blue;');
+        } else {
+            console.info('%cGLOBAL CONFIG - %cEvent Name: %c' + eventName, 'font-weight: bold;', 'font-weight: normal;', 'font-weight:bold;color:red;');
+        }
+    }
+}
+/*******************************************************/
+
+/*******************************************************/
+/*                   GTM FUNCTIONS                     */
+/*******************************************************/
+function trackGTM(trackObject) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(trackObject);
+    return trackObject;
+}
+
+//       1. OPEN
+function trackOpenLoginWindow(provider) {
+
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'login-started:' + provider,
+        'eventLabel': provider,
+        'login-started': 1,
+        'login-started:email': 1
+    };
+
+    // Track and return the object
+    return trackGTM(trackObject);
+}
+function trackOpenSocialLoginWindow(provider, origin) {
+
+
+    var trackObject = {};
+    if (origin.indexOf('gigya-register-screen') !== -1 || origin.indexOf('mbf-registration-one-step') !== -1) {
+
+        trackObject = {
+            'registrationStarted': 1,
+            'registrationStarted:social': 1
+        };
+    } else {
+        if (origin.indexOf('gigya-login-screen') !== -1 || origin.indexOf('mbf-login') !== -1) {
+            // Login
+            trackObject = {
+                'event': 'userLogin',
+                'eventCategory': 'account',
+                'eventAction': 'login-started:social',
+                'eventLabel': provider,
+                'login-started': 1,
+                'login-started:social': 1,
+                'socialMedia': provider
+            };
+        }
+    }
+    // Track and return the object
+    return trackGTM(trackObject);
+}
+function trackOpenRegistrationWindow(provider) {
+
+    var trackObject = {
+        'registrationAccess': 1
+    };
+
+    // Track and return the object
+    return trackGTM(trackObject);
+}
+function trackOpenRegistrationCompletionWindow(e) {
+
+    // console.log('This is the event for registration completion --> ', e);
+    stepsCounter = 1;
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'completionScreen',
+        'eventLabel': 'email'
+    };
+    // Track and return the object
+    return trackGTM(trackObject);
+}
+function trackOpenLiteRegistrationWindow() {
+    // var trackObject = {
+    // 'event':'userLogin',
+    // 'eventCategory':'account',
+    // 'eventAction':'login-started:' + provider,
+    // 'eventLabel': provider,
+    // 'login-started':1,
+    // 'login-started:email':1
+    // };
+    // Track and return the object
+    // return trackGTM(trackObject);
+}
+function trackOpenRegistrationOtherStepWindow() {
+    //var trackObject = {
+    // 'event':'userLogin',
+    // 'eventCategory':'account',
+    // 'eventAction':'login-started:' + provider,
+    // 'eventLabel': provider,
+    // 'login-started':1,
+    // 'login-started:email':1
+    //};
+    // Track and return the object
+    //return trackGTM(trackObject);
+}
+function trackOpenAccountLinking(provider) {
+
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'login-accountLink',
+        'eventLabel': ''
+    };
+    return trackGTM(trackObject);
+}
+//       2. LOGIN
+function trackLoginOK(provider, uid) {
+
+    // Prepare variables
+    var loginType = provider === 'site' ? 'email' : 'social';
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'login-successful',
+        'eventLabel': loginType,
+        'loginStatus': 'yes',
+        'loginType': loginType,
+        'gigyaID': uid,
+        'login-completed': 1,
+    };
+
+    // Add social / site info
+    if (loginType === 'social') {
+        trackObject.socialMedia = provider;
+        trackObject['login-completed:social'] = 1;
+    } else {
+        trackObject['login-completed:email'] = 1;
+    }
+
+    // Track and return the object
+    return trackGTM(trackObject);
+}
+function trackLoginKO(provider, errorReason) {
+
+    var loginType = provider === 'site' ? 'email' : 'social';
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'login-error',
+        'eventErrorReason': errorReason,
+        'eventLabel': loginType,
+        'login-error': 1
+    };
+
+    // Track and return the object
+    return trackGTM(trackObject);
+}
+//       3. CLOSE
+function trackCloseLoginWindow(provider) {
+    //var trackObject = {
+    // 'event':'userLogin',
+    // 'eventCategory':'account',
+    // 'eventAction':'login-started:' + provider,
+    // 'eventLabel': provider,
+    // 'login-started':1,
+    // 'login-started:email':1
+    //};
+    // Track and return the object
+    //return trackGTM(trackObject);
+}
+function trackCloseRegistrationWindow(provider) {
+    //var trackObject = {
+    // 'event':'userLogin',
+    // 'eventCategory':'account',
+    // 'eventAction':'login-started:' + provider,
+    // 'eventLabel': provider,
+    // 'login-started':1,
+    // 'login-started:email':1
+    // };
+    // Track and return the object
+    // return trackGTM(trackObject);
+}
+function trackCloseLiteRegistrationWindow(provider) {
+    // var trackObject = {
+    // 'event':'userLogin',
+    // 'eventCategory':'account',
+    // 'eventAction':'login-started:' + provider,
+    // 'eventLabel': provider,
+    // 'login-started':1,
+    // 'login-started:email':1
+    // };
+    // Track and return the object
+    // return trackGTM(trackObject);
+}
+function trackCloseRegistrationCompletionWindow() {
+    // var trackObject = {
+    // 'event':'userLogin',
+    // 'eventCategory':'account',
+    // 'eventAction':'login-started:' + provider,
+    // 'eventLabel': provider,
+    // 'login-started':1,
+    // 'login-started:email':1
+    // };
+    // Track and return the object
+    // return trackGTM(trackObject);
+}
+function trackCloseRegistrationOtherStepWindow() {
+    // var trackObject = {
+    // 'event':'userLogin',
+    // 'eventCategory':'account',
+    // 'eventAction':'login-started:' + provider,
+    // 'eventLabel': provider,
+    // 'login-started':1,
+    // 'login-started:email':1
+    // };
+    // Track and return the object
+    // return trackGTM(trackObject);
+}
+//       4. SOCIAL LOGIN
+function trackSocialLoginOK(provider, uid) {
+    var loginType = provider === 'email' ? 'email' : 'social';
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'login-successful',
+        'eventLabel': provider,
+        'loginStatus': 'yes',
+        'loginType': loginType,
+        'gigyaID': uid,
+        'login-completed': 1,
+        'login-completed:social': 1,
+        'socialMedia': provider
+    };
+
+    if (loginType === 'social') {
+        trackObject.socialMedia = provider;
+    }
+    return trackGTM(trackObject);
+}
+function trackSocialLoginKO(provider) {
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'login-error',
+        'eventLabel': provider,
+        'login-error': 1
+    };
+    return trackGTM(trackObject);
+}
+//       5. SOCIAL
+function trackCloseSocialLogin(provider, uid) {
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'login-started:social',
+        'eventLabel': '',
+        'login-started': 1,
+        'login-started:social': 1,
+        'socialMedia': ''
+    };
+    return trackGTM(trackObject);
+}
+//       6. REGISTER
+function trackRegisterOK(provider, uid) {
+    var loginType = provider === 'site' ? 'email' : 'social';
+    var trackObject = {
+        'eventLabel': loginType,
+        'registrationType': loginType,
+        'gigyaID': uid,
+        'login-completed': 1,
+        'event': 'userRegistration',
+        'eventCategory': 'form:registration',
+        'eventAction': 'completed_registration',
+        'registrationSubmitted': 1,
+        'registrationSubmitted:email': 1
+    };
+    return trackGTM(trackObject);
+}
+function trackRegisterKO(provider, errorReason) {
+    var loginType = provider === 'site' ? 'email' : 'social';
+    var trackObject = {
+        'event': 'userRegistration',
+        'eventCategory': 'account',
+        'eventAction': 'completed_registration_error',
+        'eventErrorReason': errorReason,
+        'eventLabel': loginType,
+        'login-error': 1,
+        'registrationError': 1,
+        'registrationError:email': 1
+    };
+    return trackGTM(trackObject);
+}
+function trackRegisterPendingVerificationOK(provider, uid) {
+    var loginType = provider === 'site' ? 'email' : 'social';
+    var trackObject = {
+        'eventLabel': loginType,
+        'registrationType': loginType,
+        'gigyaID': uid,
+        'login-completed': 1,
+        'event': 'userRegistration',
+        'eventCategory': 'form:registration',
+        'eventAction': 'completed_registration',
+        'registrationSubmitted': 1,
+        'registrationSubmitted:email': 1
+    };
+    return trackGTM(trackObject);
+}
+function trackRegisterPendingRegistration(provider, uid) {
+    var loginType = provider === 'site' ? 'email' : 'social';
+
+    var trackObject = {
+        'eventLabel': loginType,
+        'registrationType': loginType,
+        'gigyaID': uid,
+        'login-completed': 1,
+        'event': 'userRegistration',
+        'eventCategory': 'form:registration',
+        'eventAction': 'completed_step1',
+        'registrationSubmitted': 1,
+        'registrationSubmitted:email': 1
+    };
+    return trackGTM(trackObject);
+}
+function trackOneStepMoreForm(provider, step) {
+
+    var loginType = provider === 'site' ? 'email' : 'social';
+    var trackObject = {
+        'event': 'userRegistration',
+        'eventCategory': 'form:registration',
+        'eventAction': 'completed_step' + step,
+        'eventLabel': loginType,
+    };
+
+    // Add social / site info
+    if (loginType === 'social') {
+        trackObject.socialMedia = provider;
+        trackObject['step-completed:social'] = stepsCounter;
+    } else {
+        trackObject['step-completed:email'] = stepsCounter;
+    }
+    return trackGTM(trackObject);
+}
+function trackOneStepMoreFormKO(provider, errorReason) {
+
+
+    var loginType = provider === 'site' ? 'email' : 'social';
+
+    var trackObject = {
+        'event': 'userLogin',
+        'eventCategory': 'account',
+        'eventAction': 'login-error',
+        'eventErrorReason': errorReason,
+        'eventLabel': loginType,
+        'login-error': 1
+    };
+    return trackGTM(trackObject);
+}
+//      7. Lite REGISTER
+function trackLiteRegistration(uid) {
+    window.dataLayer = window.dataLayer || [];
+
+    var trackObject = {
+        'event': 'userRegistration',
+        'registrationType': 'lite',
+        'eventLabel': 'lite',
+        'eventAction': 'completed_registration',
+        'gigyaID': uid,
+        'registrationSubmitted': 1,
+        'registrationSubmitted:lite': 1,
+        'eventCategory': 'form:registration'
+    };
+
+    if (uid && uid !== null) {
+        trackObject.gigyaID = uid;
+        trackObject.eventAction = 'completed_registration';
+        trackObject.registrationSubmitted = 1;
+        trackObject['registrationSubmitted:lite'] = 1;
+    } else {
+        trackObject.eventAction = 'completed_registration_error';
+        trackObject.registrationError = 1;
+        trackObject['registrationError:lite'] = 1;
+    }
+    window.dataLayer.push(trackObject);
+
+    return trackObject;
+}
+/*******************************************************/
+
+
+/*******************************************************/
+/*                  TRACK FUNCTIONS                    */
+/*******************************************************/
+// OPENING THINGS...
+function trackOnAfterScreenLoadEvents(e) {
+
+    // 0. TAKE EVENT INFO
+    var eventName = e.eventName;
+    var eventType = 'afterScreenLoad';
+
+    // 1. LOG EVENT ?
+    logEvents(eventName, '', LOG_ACTUAL_USED_EVENTS);
+
+    // 2
+    if (e.currentScreen) {
+
+        currentScreen = e.currentScreen;
+        var trackObject = null;
+
+        // case 'gigya-login-screen': trackObject = trackOpenLoginWindow('email'); break;
+        if (currentScreen.indexOf('gigya-register-screen') !== -1 || currentScreen.indexOf('mbf-registration-one-step') !== -1) {
+            trackObject = trackOpenRegistrationWindow('email');
+        }
+
+        if (currentScreen.indexOf('gigya-complete-registration-screen') !== -1 || currentScreen.indexOf('mbf-registration-two-step') !== -1) {
+            trackObject = trackOpenRegistrationCompletionWindow(e);
+        }
+
+        if (currentScreen.indexOf('gigya-subscribe-with-email-screen') !== -1) {
+            trackObject = trackOpenLiteRegistrationWindow(e);
+        }
+
+        if (currentScreen.indexOf('gigya-link-account-screen') !== -1) {
+            trackObject = trackOpenAccountLinking(e);
+        }
+        // case 'gigya-verification-sent-screen':      trackObject = trackOpenAccountLinking('email'); break; // FIX THIS!!
+        GTMLog('OPEN', eventType, 'Opening [' + currentScreen + '] Screen', trackObject);
+    }
+}
+
+// SOCIAL LOGIN REQUESTS
+function trackBeforeRequestEvents(e) {
+
+    // 0. TAKE EVENT INFO
+    var eventName = e.eventName;
+    var methodName = e.methodName;
+    var eventType = 'beforeRequest';
+
+    // 1. LOG EVENT ?
+    logEvents(eventName, methodName, LOG_ACTUAL_USED_EVENTS);
+
+    // 2.1 LOG SITE LOGIN
+    if (methodName === 'accounts.login') {
+        // Triggering Social Login Events
+        provider = 'email';
+        var trackedObject = trackOpenLoginWindow(provider);
+        GTMLog('OPEN', eventType, 'Opening Login Screen for \'site\' ', trackedObject);
+    }
+
+    // 2.1 LOG SOCIAL LOGIN / SOCIAL REGISTER EVENTS
+    if (methodName === 'accounts.socialLogin') {
+        // Triggering Social Login Events
+        var provider = e.params.provider;
+        var origin = e.rawParams.startScreen;
+        trackedObject = trackOpenSocialLoginWindow(provider, origin);
+        GTMLog('OPEN', eventType, 'Opening Social Login Screen for ' + provider, trackedObject);
+    }
+}
+
+function trackAfterResponseEvents(e) {
+
+    // 0. TAKE EVENT INFO
+    var eventName = e.eventName;
+    var methodName = e.methodName;
+    var eventType = 'afterResponse';
+
+    // 1. LOG EVENT ?
+    logEvents(eventName, methodName, LOG_ACTUAL_USED_EVENTS);
+
+    // 3.LOGIN EVENTS
+
+    // 4. SOCIAL EVENTS
+    if (methodName === 'accounts.socialLogin') {
+        // Triggering Social Login Events
+        var errorCode = e.response.errorCode;
+        var provider = e.filteredParams.provider;
+        var isLogin = e.response.requestParams.startScreen.indexOf('gigya-login-screen') !== -1 || e.response.requestParams.startScreen.indexOf('mbf-login') !== -1;
+        var isRegister = e.response.requestParams.startScreen.indexOf('gigya-register-screen') !== -1 || e.response.requestParams.startScreen.indexOf('mbf-registration-one-step') !== -1;
+        var screenType = isLogin ? 'LOGIN' : isRegister ? 'REGISTER' : 'UNKNOWN';
+
+        // Cancelled or error
+        if (errorCode === '200001' && provider) {
+            var trackObject = trackCloseSocialLogin(e);
+            GTMLog('CLOSE', eventType, 'Close ' + screenType + ' window for provider \'' + provider + '\'. Reason: ' + e.response.errorMessage, trackObject);
+        } else {
+            if (errorCode !== '0') {
+                GTMLog('CLOSE', eventType, 'Close ' + screenType + ' window for provider \'' + provider + '\'. Reason: ' + e.response.errorMessage);
+            }
+        }
+    }
+}
+function trackBeforeSubmitEvents(e) {
+    // 0. TAKE EVENT INFO
+    var eventName = e.eventName;
+    var methodName = e.methodName;
+
+    // 1. LOG EVENT ?
+    logEvents(eventName, methodName, LOG_ACTUAL_USED_EVENTS);
+
+}
+// LOGINS & REGISTERS OK & KO
+function trackAfterSubmitEvents(e) {
+
+    // 0. TAKE EVENT INFO
+    var eventName = e.eventName;
+    var methodName = e.response.operation ? e.response.operation.split('/')[1] : null;
+    var eventType = 'afterSubmit';
+
+    const errorCode = Number(e.response.errorCode);
+    var provider = e.response ? e.response.loginProvider : null;
+    const source = e.response.requestParams ? e.response.requestParams.source : null;
+    const startScreen = e.response.requestParams ? e.response.requestParams.startScreen : null;
+    const screenName = e.screen;
+  
+
+
+    // 1. LOG EVENT ?
+    logEvents(eventName, methodName, LOG_ACTUAL_USED_EVENTS);
+
+    // 2. LOGIN EVENTS
+    if (methodName === 'accounts.login') {
+
+        const errorCode = Number(e.response.errorCode);
+        var provider = e.response.loginProvider ? e.response.loginProvider : 'site';
+
+        if (errorCode !== 0 && errorCode !== 206001) {
+
+            // Not track when bad credentials!!
+            if (errorCode === 403042) {
+
+                // Track the invalid login
+                var trackObject = trackLoginKO(provider, e.response.errorMessage);
+                GTMLog('LOGIN', eventType, 'Not Logged event for provider \'' + provider + '\' with error [' + errorCode + '] --> ' + e.response.errorMessage, trackObject);
+            }
+
+        } else {
+            // Login is correct. Track it.
+            var uid = e.response.UID;
+            trackObject = trackLoginOK(provider, uid);
+            GTMLog('LOGIN', eventType, 'Logged event for provider \'' + provider + '\' with uid ' + uid, trackObject);
+        }
+    }
+
+    // 3. REGISTRATION COMPLETION EVENTS
+    if (methodName === 'accounts.finalizeRegistration') {
+
+        const errorCode = Number(e.response.errorCode);
+        provider = e.response.loginProvider ? e.response.loginProvider : 'site';
+        const screenName = e.screen;
+
+        if (errorCode === 0) {
+            uid = e.response.UID;
+
+            // Track registration completion step if we are involved on a step-by-step registration
+            if (stepsCounter > 1) {
+                trackObject = trackOneStepMoreForm(provider, stepsCounter);
+                GTMLog('ONE STEP MORE IN FORM', eventType, 'Passed ' + screenName + ' and going to the next step', trackObject);
+            }
+
+            trackObject = trackRegisterOK(provider, uid);
+            GTMLog('Finalize registration success', eventType, 'Logged event for provider \'' + provider + '\'', trackObject);
+
+        } else {
+            trackObject = trackRegisterKO(provider, e.response.errorMessage);
+            GTMLog('Finalize registration failed', eventType, 'Not Logged event for provider \'' + provider + '\' with error [' + errorCode + '] --> ' + e.response.errorMessage, trackObject);
+        }
+    }
+
+    // 3. REGISTRATION COMPLETION EVENTS
+    if (methodName === 'accounts.register') {
+
+        const errorCode = Number(e.response.errorCode);
+        provider = e.response.loginProvider ? e.response.loginProvider : 'site';
+
+        if (errorCode === 0) {
+            // Track registration success
+            uid = e.response.UID;
+            trackObject = trackRegisterOK(provider, uid);
+            GTMLog('REGISTER', eventType, 'Registered event for provider \'' + provider + '\'', trackObject);
+
+        } else {
+
+            // Account pending registration (missing required fields)
+            if (errorCode === 206001) {
+                uid = e.response.UID;
+                trackObject = trackRegisterPendingRegistration(provider, uid);
+                GTMLog('REGISTER', eventType, 'Registered (but pending verification) event for provider \'' + provider + '\'', trackObject);
+            } else {
+
+                // Account pending verification
+                if (errorCode === 206002) {
+                    uid = e.response.UID;
+                    trackObject = trackRegisterPendingVerificationOK(provider, uid);
+                    GTMLog('REGISTER', eventType, 'Not fully registered (pending registration) event for provider \'' + provider + '\'', trackObject);
+                } else {
+                    // Track the invalid register for whatever reason
+                    trackObject = trackRegisterKO(provider, e.response.errorMessage);
+                    GTMLog('REGISTER', eventType, 'Not Registered event for provider \'' + provider + '\' with error [' + errorCode + '] --> ' + e.response.errorMessage, trackObject);
+                }
+            }
+        }
+    }
+
+    // 3. SOCIAL EVENTS
+    if (methodName === 'accounts.socialLogin') {
+        // Triggering Social Login Events
+        const errorCode = Number(e.response.errorCode);
+        provider = e.response.loginProvider;
+
+
+        var isLogin = e.response.requestParams.startScreen.indexOf('gigya-login-screen') !== -1 || e.response.requestParams.startScreen.indexOf('mbf-login') !== -1;
+        var isRegister = e.response.requestParams.startScreen.indexOf('gigya-register-screen') !== -1 || e.response.requestParams.startScreen.indexOf('mbf-registration-one-step') !== -1;
+        var screenType = isLogin ? 'LOGIN' : isRegister ? 'REGISTER' : 'UNKNOWN';
+
+        if (errorCode !== 0 && errorCode !== 206001) {
+            trackSocialLoginKO(provider);
+            GTMLog('SOCIAL LOGIN', eventType, 'Close ' + screenType + ' window for provider \'' + provider + '\'. Reason: ' + e.response.errorMessage);
+        } else {
+            uid = e.response.UID;
+            trackObject = trackSocialLoginOK(provider, uid);
+            GTMLog('SOCIAL LOGIN', eventType, 'Logged event for provider \'' + provider + '\' with uid \'' + uid + '\'', trackObject);
+        }
+    }
+
+    // 4. SOCIAL EVENTS
+    if (methodName === 'accounts.getAccountInfo') {
+        // CASO THROUGH STEPS
+        if (source === 'showScreenSet' && (startScreen.indexOf('gigya-register-screen') !== -1 || startScreen.indexOf('mbf-registration-one-step') !== -1)) {
+
+            provider = provider ? provider : 'site';
+            if (errorCode !== 0 && errorCode !== 206001) {
+                // TODO not track when bad credentials!!
+                var errorReason = e.response.errorMessage;
+                trackObject = trackOneStepMoreFormKO(provider, errorReason);
+                GTMLog('ONE STEP MORE IN FORM', eventType, 'Failed ' + screenName + ' and going to the next step. Error Reason: ' + errorReason, trackObject);
+            } else {
+
+                // Track the object
+                trackObject = trackOneStepMoreForm(provider, stepsCounter);
+                GTMLog('ONE STEP MORE IN FORM', eventType, 'Passed ' + screenName + ' and going to the next step', trackObject);
+
+                // Increase the steps counter for next screen
+                stepsCounter++;
+            }
+        }
+    }
+
+    // 5. LITE REGISTRATION EVENTS
+    if (startScreen === 'gigya-subscribe-with-email-screen') {
+        if (e.response.errorCode === 0) {
+            uid = e.response.UID;
+            trackObject = trackLiteRegistration(uid);
+            GTMLog('Register Lite', eventType, 'Registered Lite Successful Event with UID ' + uid, trackObject);
+        } else {
+            trackObject = trackLiteRegistration(null);
+            GTMLog('Register Lite', eventType, 'Registered Lite NOT SUCCESSFUL Event', trackObject);
+        }
+    }
+}
+function trackCloseScreensetEvents(e) {
+
+    // 0. TAKE EVENT INFO
+    var eventName = e.eventName;
+    var reason = e.reason;
+    var source = e.source;
+    var eventType = 'hide';
+
+    // 1. LOG EVENT ?
+    logEvents(eventName, '', LOG_ACTUAL_USED_EVENTS);
+    // 2
+    if (reason === 'canceled' && source === 'showScreenSet') {
+
+        if (e.currentScreen.indexOf('gigya-login-screen') !== -1 || e.currentScreen.indexOf('mbf-login') !== -1) {
+            trackCloseLoginWindow('email');
+        }
+
+        if (e.currentScreen.indexOf('gigya-register-screen') !== -1 || e.currentScreen.indexOf('mbf-registration-one-step') !== -1) {
+            trackCloseRegistrationWindow('email');
+        }
+
+        // case 'gigya-complete-registration-screen':  trackCloseRegistrationCompletionWindow('email'); break;
+        if (e.currentScreen.indexOf('gigya-register-screen') !== -1 || e.currentScreen.indexOf('mbf-registration-one-step') !== -1) {
+            trackCloseRegistrationWindow('email');
+        }
+
+        if (e.currentScreen.indexOf('gigya-subscribe-with-email-screen') !== -1) {
+            trackCloseLiteRegistrationWindow('email');
+        }
+        GTMLog('CLOSE', eventType, 'Closing [' + currentScreen + '] Screen');
+    }
+}
+/*******************************************************/

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://www.kitkat.co.uk/kitkatcollection/sharingbags -->
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# " class=" js js flexbox canvas canvastext webgl no-touch geolocation websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="./COLLECTION_files/NRJS-11a2b90520ac674a8a0"></script><script src="./COLLECTION_files/nr-1215.min.js.download"></script><script async="" src="./COLLECTION_files/en-64964.js.download" charset="utf-8"></script><script async="" id="evidon-settings" src="./COLLECTION_files/settings.js.download" charset="utf-8"></script><script async="" id="evidon-themes" src="./COLLECTION_files/snthemes.js.download" charset="utf-8"></script><script async="" id="evidon-location" src="./COLLECTION_files/country.js.download" charset="utf-8"></script><script id="evidon-notice" src="./COLLECTION_files/evidon-sitenotice-tag.js.download" charset="utf-8"></script><script src="./COLLECTION_files/gtm.js.download" async=""></script><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-11a2b90520ac674a8a0",applicationID:"840103234"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(10),c=t(11),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(12);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],7:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(9),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],8:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],9:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],10:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],11:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],12:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(10),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!P++){var t=M.info=NREUM.info,e=g.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(O,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+M.offset],null,"api"),c("timing",["load",n]);var r=g.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=v+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===g.readyState&&o()}function o(){c("mark",["domContent",a()+M.offset],null,"api")}var a=t(5),c=t("handle"),f=t(10),u=t("ee"),s=t(8),d=t(6),p=t(2),l=t(3),v=p.getConfiguration("ssl")===!1?"http":"https",m=window,g=m.document,y="addEventListener",h="attachEvent",w=m.XMLHttpRequest,b=w&&w.prototype,E=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:w,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,O={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1215.min.js"},T=w&&b&&b[y]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:T,userAgent:s,disabled:E};if(!E){t(1),t(7),g[y]?(g[y]("DOMContentLoaded",o,l(!1)),m[y]("load",r,l(!1))):(g[h]("onreadystatechange",i),m[h]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var P=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(11),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<script>window.dataLayer = window.dataLayer || []; window.dataLayer.push({"drupalLanguage":"en","drupalCountry":"","siteName":"Kitkat UK","entityCreated":"1595477397","entityLangcode":"en","entityStatus":"1","entityUid":"1","entityUuid":"1a0acf81-38f3-4bbd-af46-898aa86a6a7f","entityVid":"920","entityName":"admin","entityType":"node","entityBundle":"product_category","entityId":"60","entityTitle":"Sharing Bags","userUid":0});</script>
+<link rel="canonical" href="https://www.kitkat.co.uk/kitkatcollection/sharingbags">
+<meta name="description" content="Say hello to our newest addition: KitKat Pops. These delicious balls of chocolate and wafer yumminess are great for sharing with family and friends. Read more.">
+<meta name="keywords" content="4 finger kitkat">
+<link rel="icon" sizes="16x16" href="https://www.kitkat.co.uk/sites/default/files/2020-09/favicon-16x16.png">
+<link rel="icon" sizes="32x32" href="https://www.kitkat.co.uk/sites/default/files/2020-09/favicon-32x32.png">
+<meta name="facebook-domain-verification" content="mjqlev8an71r9ouos6bdnxmbzoos8x">
+<meta name="google-site-verification" content="0DsOyPmSthw526CvvFfkbz_rAnl1kG4oDaKx3a9bUtA">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="https://www.kitkat.co.uk/sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon">
+<link rel="alternate" hreflang="en" href="https://www.kitkat.co.uk/kitkatcollection/sharingbags">
+<link rel="revision" href="https://www.kitkat.co.uk/kitkatcollection/sharingbags">
+<script src="./COLLECTION_files/google_tag.script.js.download" defer=""></script>
+
+    <title>KitKat Pops Collection | KitKat</title>
+    <link rel="stylesheet" media="all" href="./COLLECTION_files/css_h7-sPSTf9LdYAjHLtYugE29mw_cTx7Xpfu8sUCp9CWw.css">
+<link rel="stylesheet" media="all" href="./COLLECTION_files/css_2d4wQ_feHmyVgsB8gS_nrXn7xu6090ep-HV57xLN5yw.css">
+<link rel="stylesheet" media="all" href="./COLLECTION_files/css">
+<link rel="stylesheet" media="all" href="./COLLECTION_files/css2">
+<link rel="stylesheet" media="all" href="./COLLECTION_files/css_Bu02prx4TbWDAd1AepD_NLqn4gxHWvoPnUA12X1aTNk.css">
+
+    <script src="./COLLECTION_files/multi-touchpoint.min.js.download"></script>
+
+          <script type="text/javascript" src="./COLLECTION_files/seckit.document_write.js.download"></script><!--
+        <link type="text/css" rel="stylesheet" id="seckit-clickjacking-no-body" media="all" href="/modules/contrib/seckit/css/seckit.no_body.css" />
+        <!-- stop SecKit protection -->
+        <noscript>
+        <link type="text/css" rel="stylesheet" id="seckit-clickjacking-noscript-tag" media="all" href="/modules/contrib/seckit/css/seckit.noscript_tag.css" />
+        <div id="seckit-noscript-tag">
+          Sorry, you need to enable JavaScript to visit this website.
+        </div>
+        </noscript><script type="text/javascript" async="" src="./COLLECTION_files/gigya.js.download"></script><script src="./COLLECTION_files/gtm.js(1).download"></script></head>
+  <body class="path-node page-node-type-product-category">
+        <a href="https://www.kitkat.co.uk/kitkatcollection/sharingbags#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WF4XRH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+    <div id="container">
+  <div id="header">
+    <div class="wrapper clearfix">
+        <div>
+                <a href="https://www.kitkat.co.uk/" title="Home" rel="home" id="logo">
+            <img src="./COLLECTION_files/logo.png" alt="Home">
+        </a>
+              <div class="hdr-adimo">
+    
+			
+  
+  
+
+  <!-- To be placed where you would like the button to appear -->
+      <a href="javascript:void(0);" class="adimo-multi-touchpoint btn-add_to_basket" data-type="multi-touchpoint-lightbox" data-static-touchpoint-identifiers="751815ca-79b2-46b5-a00a-2cf99fca9aa1,72763c91-a863-47ff-98b0-2a22c1e7a19c,11d5c8c9-7f90-4446-bafa-d739b6b948a7" data-do-not-track="true" data-setup="true">
+      <span class="button-text" onclick="window.Adimo.setLanguage(&#39;en&#39;);">Buy Now</span>
+    </a>
+  
+
+  
+
+	
+  </div>
+<div id="block-clock" data-block-plugin-id="clock_block">
+  
+    
+      <div id="hdr-clock">
+  <div id="clock" style="display: block;">
+    <img id="clock-hr" src="./COLLECTION_files/clock-hr-arrow.png" alt="Clock hour arrow" style="transform: rotate(69.5deg);">
+    <img id="clock-min" src="./COLLECTION_files/clock-min-arrow.png" alt="Clock minute arrow" style="transform: rotate(114deg);">
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+      <div class="main-menu">
+        <a class="btn-m-menu" href="javascript:;"><span></span></a>
+        <div class="menu">
+              
+
+
+				<ul class="hdr-menu">
+											<li>
+															<a href="https://www.kitkat.co.uk/" data-drupal-link-system-path="&lt;front&gt;"><span>What's on?</span></a>
+														</li>
+											<li>
+															<a href="https://www.kitkat.co.uk/kitkat-chunky" data-drupal-link-system-path="node/68"><span>KitKat<sup>®</sup> Chunky</span></a>
+														</li>
+											<li>
+															<a href="https://www.kitkat.co.uk/collection" data-drupal-link-system-path="node/20"><span>KitKat<sup>®</sup>Collection</span></a>
+														</li>
+											<li>
+															<a href="https://www.kitkat.co.uk/nestle-cocoa-plan" data-drupal-link-system-path="node/3"><span>The Nestlé Cocoa Plan</span></a>
+														</li>
+											<li>
+															<a href="https://www.kitkat.co.uk/faqs-and-contact-us" data-drupal-link-system-path="node/37"><span>FAQs and Contact Us</span></a>
+														</li>
+					</ul>
+	
+
+
+
+  
+			      <ul class="scl-menu">
+      
+																																		      <li>
+        <a href="https://www.instagram.com/kitkat/" target="_blank" title="">
+          <i class="ic" style="background: url(https://www.kitkat.co.uk/sites/default/files/2021-12/instagram.png)"></i>
+        </a>
+      </li>
+			
+																																	      <li>
+        <a href="http://www.facebook.com/kitkat" target="_blank" title="">
+          <i class="ic" style="background: url(https://www.kitkat.co.uk/sites/default/files/2020-07/fb.png)"></i>
+        </a>
+      </li>
+			
+																										      <li>
+        <a href="https://twitter.com/KITKAT" target="_blank" title="">
+          <i class="ic" style="background: url(https://www.kitkat.co.uk/sites/default/files/2020-07/twitter_0.png)"></i>
+        </a>
+      </li>
+			
+																										      <li>
+        <a href="http://www.youtube.com/user/kitkat" target="_blank" title="">
+          <i class="ic" style="background: url(https://www.kitkat.co.uk/sites/default/files/2020-07/yt.png)"></i>
+        </a>
+      </li>
+			
+			
+    </ul>
+  
+	
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+      <div>
+    <div data-drupal-messages-fallback="" class="hidden"></div><div id="block-pws-kitkat-content" data-block-plugin-id="system_main_block">
+  
+    
+      <article role="article" about="/kitkatcollection/sharingbags" class="product-category is-promoted full clearfix" itemscope="" itemtype="http://schema.org/Product">
+  
+  <meta itemprop="mpn" content="">
+  <meta itemprop="name" content="Bites - Milk Chocolate">
+  <link itemprop="image" href="./COLLECTION_files/bites-milk_0(1).png">
+  <meta itemprop="sku" content="">
+  <div itemprop="brand" itemtype="http://schema.org/Brand" itemscope="">
+    <meta itemprop="name" content="KitKat">
+  </div>
+
+  <div class="py-2 align-c">
+    <div class="banner-wrapper">
+      
+			    <div class="paragraph paragraph--type--custom-text paragraph--view-mode--default">
+                    
+			<h4 class="font-1 highlight-1 normal line_height-4">Say hello to KITKAT's sharing bags. Great for sharing with family and friends.</h4>
+
+<h1 class="font-1 highlight-1 line_height-4">Sharing Bags Collection</h1>
+
+	
+            </div>
+
+	
+    </div>
+  </div>
+
+  <div class="product-hdr_shadow"></div>
+
+  <!-- PRODUCT CATEGORY -->
+  <div class="mt-2 mb-4">
+    <div class="wrapper">
+      <div class="prd-categories slick-custom slick-initialized slick-slider">
+                  
+                  
+                  
+                  
+                  
+              <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1110px; transform: translate3d(0px, 0px, 0px);"><div class="prd-item slick-slide slick-current slick-active" style="width: 222px;" data-slick-index="0" aria-hidden="false" tabindex="0">
+            <div class="prd-ctg-text">
+              <h2><em>Chunky</em></h2>
+              <h5 class="font-1">#mybreak</h5>
+            </div>
+            <div class="prd-ctg-thumbnail">
+              <a href="https://www.kitkat.co.uk/collection/kitkat-chunky" title="Chunky" tabindex="0">
+                
+			<div>
+  
+  
+			  <img src="./COLLECTION_files/milk-category.png" alt="Chunk Milk Category" loading="lazy" typeof="foaf:Image">
+
+
+
+	
+</div>
+
+	
+              </a>
+            </div>
+            <div class="prd-ctg-link">
+              
+			
+  
+  
+
+  <!-- To be placed where you would like the button to appear -->
+      <a href="javascript:void(0);" class="adimo-multi-touchpoint btn-add_to_basket" data-type="multi-touchpoint-lightbox" data-static-touchpoint-identifiers="16bb318b-d514-468c-a98e-edee2c9aa76a,1a3bf32e-249f-407c-bca7-f474868fdf43,faa4dfd9-f29c-4b20-8b4f-37b41baf2959" data-do-not-track="true" tabindex="0" data-setup="true">
+      <span class="button-text" onclick="window.Adimo.setLanguage(&#39;en&#39;);">Buy Now</span>
+    </a>
+  
+
+  
+
+	
+            </div>
+          </div><div class="prd-item slick-slide slick-active" style="width: 222px;" data-slick-index="1" aria-hidden="false" tabindex="0">
+            <div class="prd-ctg-text">
+              <h2><em>4 Finger</em></h2>
+              <h5 class="font-1">#mybreak</h5>
+            </div>
+            <div class="prd-ctg-thumbnail">
+              <a href="https://www.kitkat.co.uk/collection/kitkat-4-finger" title="4 Finger" tabindex="0">
+                
+			<div>
+  
+  
+			  <img src="./COLLECTION_files/4-finger-milk.png" alt="4 Finger Milk" loading="lazy" typeof="foaf:Image">
+
+
+
+	
+</div>
+
+	
+              </a>
+            </div>
+            <div class="prd-ctg-link">
+              
+			
+  
+  
+
+  <!-- To be placed where you would like the button to appear -->
+      <a href="javascript:void(0);" class="adimo-multi-touchpoint btn-add_to_basket" data-type="multi-touchpoint-lightbox" data-static-touchpoint-identifiers="f082c822-fb1d-4953-8c9f-7aea5c0663ab,21061500-928d-4ce0-b8c1-34ec31f343b8,169eb2eb-3f48-4695-b530-44c5c4657a5b" data-do-not-track="true" tabindex="0" data-setup="true">
+      <span class="button-text" onclick="window.Adimo.setLanguage(&#39;en&#39;);">Buy Now</span>
+    </a>
+  
+
+  
+
+	
+            </div>
+          </div><div class="prd-item slick-slide slick-active" style="width: 222px;" data-slick-index="2" aria-hidden="false" tabindex="0">
+            <div class="prd-ctg-text">
+              <h2><em>2 Finger</em></h2>
+              <h5 class="font-1">#mybreak</h5>
+            </div>
+            <div class="prd-ctg-thumbnail">
+              <a href="https://www.kitkat.co.uk/collection/kitkat-2-finger" title="2 Finger" tabindex="0">
+                
+			<div>
+  
+  
+			  <img src="./COLLECTION_files/2f-milk.png" alt="2 Finger" loading="lazy" typeof="foaf:Image">
+
+
+
+	
+</div>
+
+	
+              </a>
+            </div>
+            <div class="prd-ctg-link">
+              
+			
+  
+  
+
+  <!-- To be placed where you would like the button to appear -->
+      <a href="javascript:void(0);" class="adimo-multi-touchpoint btn-add_to_basket" data-type="multi-touchpoint-lightbox" data-static-touchpoint-identifiers="7bc1f141-a556-4c30-83ba-9aeb8ebfb58a,480bff96-2e5a-474c-a615-3306e960c621,d366f315-63ef-4241-8aad-cac102beae76" data-do-not-track="true" tabindex="0" data-setup="true">
+      <span class="button-text" onclick="window.Adimo.setLanguage(&#39;en&#39;);">Buy Now</span>
+    </a>
+  
+
+  
+
+	
+            </div>
+          </div><div class="prd-item active slick-slide slick-active" style="width: 222px;" data-slick-index="3" aria-hidden="false" tabindex="0">
+            <div class="prd-ctg-text">
+              <h2><em>Sharing Bags</em></h2>
+              <h5 class="font-1">#mybreak</h5>
+            </div>
+            <div class="prd-ctg-thumbnail">
+              <a href="https://www.kitkat.co.uk/kitkatcollection/sharingbags" title="Sharing Bags" tabindex="0">
+                
+			<div>
+  
+  
+			  <img src="./COLLECTION_files/bites-milk_0.png" alt="KitKat Bites - Milk" loading="lazy" typeof="foaf:Image">
+
+
+
+	
+</div>
+
+	
+              </a>
+            </div>
+            <div class="prd-ctg-link">
+              
+			
+  
+  
+
+  <!-- To be placed where you would like the button to appear -->
+      <a href="javascript:void(0);" class="adimo-multi-touchpoint btn-add_to_basket" data-type="multi-touchpoint-lightbox" data-static-touchpoint-identifiers="8eeb258d-30b3-46b9-af7f-cbf39f88adb9,18a7c34c-bbc0-4027-bc22-9ffaa486a99a,51676bbf-4233-4a24-a22d-c71665d1a25e" data-do-not-track="true" tabindex="0" data-setup="true">
+      <span class="button-text" onclick="window.Adimo.setLanguage(&#39;en&#39;);">Buy Now</span>
+    </a>
+  
+
+  
+
+	
+            </div>
+          </div><div class="prd-item slick-slide slick-active" style="width: 222px;" data-slick-index="4" aria-hidden="false" tabindex="0">
+            <div class="prd-ctg-text">
+              <h2><em>Seasonal</em></h2>
+              <h5 class="font-1">#mybreak</h5>
+            </div>
+            <div class="prd-ctg-thumbnail">
+              <a href="https://www.kitkat.co.uk/kitkatcollection/seasonal" title="Seasonal" tabindex="0">
+                
+			<div>
+  
+  
+			  <img src="./COLLECTION_files/kk_bunny_milk_chocolate_easter_figure_29g-main.png" alt="Kit Kat Bunny Milk Chocolate Easter Figure 29g" loading="lazy" typeof="foaf:Image">
+
+
+
+	
+</div>
+
+	
+              </a>
+            </div>
+            <div class="prd-ctg-link">
+              
+			
+  
+  
+
+  <!-- To be placed where you would like the button to appear -->
+      <a href="javascript:void(0);" class="adimo-multi-touchpoint btn-add_to_basket" data-type="multi-touchpoint-lightbox" data-static-touchpoint-identifiers="52a8fba5-4edc-41cb-b24c-7e244559fc4b,d133d528-c16d-4e91-81fc-f13db321eec5,80a89b08-0f2b-4d93-ba33-90b639d100c0" data-do-not-track="true" tabindex="0" data-setup="true">
+      <span class="button-text" onclick="window.Adimo.setLanguage(&#39;en&#39;);">Buy Now</span>
+    </a>
+  
+
+  
+
+	
+            </div>
+          </div></div></div></div>
+    </div>
+  </div>
+  <!-- END PRODUCT CATEGORY -->
+
+  <!-- RELATED PRODUCT -->
+      <div class="box-prd-subcategory">
+      <div class="wrapper">
+
+        <div class="prd-subcategory slick-custom slick-initialized slick-slider">
+                      
+                      
+                      
+                      
+                  <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 960px; transform: translate3d(0px, 0px, 0px);"><div class="prd-sbc-item slick-slide slick-current slick-active" style="width: 240px;" data-slick-index="0" aria-hidden="false" tabindex="0">
+              <div class="prd-sbc-itm-image">
+                <a href="https://www.kitkat.co.uk/kitkatcollection/sharingbag/bites-milk-chocolate" title="Bites - Milk Chocolate" tabindex="0">
+                  <img src="./COLLECTION_files/bites-milk_0(1).png" alt="https://www.kitkat.co.uk/sites/default/files/2022-02/bites-milk_0.png">
+                </a>
+              </div>
+              <div class="prd-sbc-itm-text">
+                <h3 class="h5"><a href="https://www.kitkat.co.uk/kitkatcollection/sharingbag/bites-milk-chocolate" title="Bites - Milk Chocolate" tabindex="0"><em>Bites - Milk Chocolate</em></a></h3>
+              </div>
+            </div><div class="prd-sbc-item slick-slide slick-active" style="width: 240px;" data-slick-index="1" aria-hidden="false" tabindex="0">
+              <div class="prd-sbc-itm-image">
+                <a href="https://www.kitkat.co.uk/kitkatcollection/sharingbag/bites-caramel" title="Bites - Caramel" tabindex="0">
+                  <img src="./COLLECTION_files/bites-caramel_0.png" alt="https://www.kitkat.co.uk/sites/default/files/2022-02/bites-caramel_0.png">
+                </a>
+              </div>
+              <div class="prd-sbc-itm-text">
+                <h3 class="h5"><a href="https://www.kitkat.co.uk/kitkatcollection/sharingbag/bites-caramel" title="Bites - Caramel" tabindex="0"><em>Bites - Caramel</em></a></h3>
+              </div>
+            </div><div class="prd-sbc-item slick-slide slick-active" style="width: 240px;" data-slick-index="2" aria-hidden="false" tabindex="0">
+              <div class="prd-sbc-itm-image">
+                <a href="https://www.kitkat.co.uk/pops-milk-chocolate" title="Pops - Milk Chocolate" tabindex="0">
+                  <img src="./COLLECTION_files/pops-milk.png" alt="https://www.kitkat.co.uk/sites/default/files/2021-08/pops-milk.png">
+                </a>
+              </div>
+              <div class="prd-sbc-itm-text">
+                <h3 class="h5"><a href="https://www.kitkat.co.uk/pops-milk-chocolate" title="Pops - Milk Chocolate" tabindex="0"><em>Pops - Milk Chocolate</em></a></h3>
+              </div>
+            </div><div class="prd-sbc-item slick-slide slick-active" style="width: 240px;" data-slick-index="3" aria-hidden="false" tabindex="0">
+              <div class="prd-sbc-itm-image">
+                <a href="https://www.kitkat.co.uk/pops-peanut-corn" title="Pops - Peanut &amp; Corn" tabindex="0">
+                  <img src="./COLLECTION_files/pops-peanut.png" alt="https://www.kitkat.co.uk/sites/default/files/2021-08/pops-peanut.png">
+                </a>
+              </div>
+              <div class="prd-sbc-itm-text">
+                <h3 class="h5"><a href="https://www.kitkat.co.uk/pops-peanut-corn" title="Pops - Peanut &amp; Corn" tabindex="0"><em>Pops - Peanut &amp; Corn</em></a></h3>
+              </div>
+            </div></div></div></div>
+      </div>
+    </div>
+    <!-- END RELATED PRODUCT -->
+
+  <div class="py-3">
+    <div class="wrapper">
+      <div class="row product_detial">
+        <div class="col-12 mb-2 col-md-6 mb-md-0 prd-image">
+          
+			<div>
+  
+  
+			  <img src="./COLLECTION_files/bites-milk_0.png" alt="KitKat Bites - Milk" loading="lazy" typeof="foaf:Image">
+
+
+
+	
+</div>
+
+	
+        </div>
+        <div class="col-12 col-md-6 prd-detail">
+          <h2 class="h1"><em>Bites - Milk Chocolate</em></h2>
+          <div itemprop="description">
+            
+			<p>KITKAT Bites are delicious bite-sized pieces with a smooth chocolatey centre and crispy wafer pieces.</p>
+
+<p>KITKAT Bites are delicious bite-sized pieces with a smooth chocolatey centre and crispy wafer pieces. Open up the pouch, share with friends and reseal to save some for later. These bags of bites are perfect for your movie night in.</p>
+
+	
+          </div>
+
+          <div class="tab_menu my-2">
+            <ul>
+              <li class="active"><a href="https://www.kitkat.co.uk/kitkatcollection/sharingbags#nutrition" title="">Nutritional Information</a></li>
+              <li><a href="https://www.kitkat.co.uk/kitkatcollection/sharingbags#ingredients" title="">Ingredients</a></li>
+            </ul>
+          </div>
+
+          <div id="nutrition" class="tab_item" style="display: block;">
+            
+			<div class="table_responsive">
+<table border="0" class="rda nti-table">
+	<tbody>
+		<tr>
+			<th>Typical Values</th>
+			<th>Per 100g</th>
+			<th>Per 7 sweets</th>
+			<th>Reference Intake*</th>
+			<th>% RI*</th>
+		</tr>
+		<tr class="nti-item nti-energy">
+			<td>Energy</td>
+			<td>2209kJ</td>
+			<td>418kJ</td>
+			<td>8400kJ</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="nti-item nti-">
+			<td>&nbsp;</td>
+			<td>529kcal</td>
+			<td>100kcal</td>
+			<td>2000kcal</td>
+			<td>5%</td>
+		</tr>
+		<tr class="nti-item nti-fat">
+			<td>Fat</td>
+			<td>29.2g</td>
+			<td>5.5g</td>
+			<td>70g</td>
+			<td>8%</td>
+		</tr>
+		<tr class="nti-item nti-ofwhichsaturates">
+			<td>of which: saturates</td>
+			<td>15.9g</td>
+			<td>3.0g</td>
+			<td>20g</td>
+			<td>15%</td>
+		</tr>
+		<tr class="nti-item nti-carbohydrate">
+			<td>Carbohydrate</td>
+			<td>59.6g</td>
+			<td>11.3g</td>
+			<td>260g</td>
+			<td>4%</td>
+		</tr>
+		<tr class="nti-item nti-ofwhichsugars">
+			<td>of which: sugars</td>
+			<td>53.0g</td>
+			<td>10.0g</td>
+			<td>90g</td>
+			<td>11%</td>
+		</tr>
+		<tr class="nti-item nti-fibre">
+			<td>Fibre</td>
+			<td>2.1g</td>
+			<td>0.4g</td>
+			<td>-</td>
+			<td>-</td>
+		</tr>
+		<tr class="nti-item nti-protein">
+			<td>Protein</td>
+			<td>5.8g</td>
+			<td>1.1g</td>
+			<td>50g</td>
+			<td>2%</td>
+		</tr>
+		<tr class="nti-item nti-salt">
+			<td>Salt</td>
+			<td>0.25g</td>
+			<td>0.05g</td>
+			<td>6g</td>
+			<td>&lt;1%</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+	
+            
+			<div class="gda-ref">Per Portion</div>
+
+<ul class="gda-header">
+	<li>Each 7 sweets contain</li>
+</ul>
+
+<ul class="gda-lozenge">
+	<li class="gda-rating-unspecified"><span class="gda-name">Energy</span><span class="gda-quantities"><span class="gda-value">418kJ</span><span class="gda-value">100kcal</span></span><span class="gda-pct-footer"><span class="gda-pct">5% </span></span></li>
+	<li class="gda-rating-high"><span class="gda-name">Fat</span><span class="gda-quantities"><span class="gda-value">5.5g</span></span><span class="gda-pct-footer"><span class="gda-pct">8% </span></span></li>
+	<li class="gda-rating-high"><span class="gda-name">Saturates</span><span class="gda-quantities"><span class="gda-value">3.0g</span></span><span class="gda-pct-footer"><span class="gda-pct">15% </span></span></li>
+	<li class="gda-rating-high"><span class="gda-name">Sugars</span><span class="gda-quantities"><span class="gda-value">10.0g</span></span><span class="gda-pct-footer"><span class="gda-pct">11% </span></span></li>
+	<li class="gda-rating-low"><span class="gda-name">Salt</span><span class="gda-quantities"><span class="gda-value">0.05g</span></span><span class="gda-pct-footer"><span class="gda-pct">&lt;1% </span></span></li>
+</ul>
+
+<ul class="gda-footer">
+	<li>of an adult's Reference Intake Intake (RI)*</li>
+	<li>Energy per 100g: 2209kJ/529kcal</li>
+	<li>*Reference Intake of an average adult (8400kJ/ 2000kcal)</li>
+</ul>
+
+	
+          </div>
+
+          <div id="ingredients" class="tab_item">
+            
+			<ul class="igd-list">
+	<li>Sugar</li>
+	<li>Vegetable Fats (Palm, Shea, Sunflower)</li>
+	<li>Dried Whole Milk</li>
+	<li>Cocoa Butter</li>
+	<li>Cocoa Mass</li>
+	<li>Wheat Flour (contains Calcium, Iron, Thiamin and Niacin)</li>
+	<li>Whey Powder Product (from Milk)</li>
+	<li>Skimmed Milk Powder</li>
+	<li>Fat-Reduced Cocoa Powder</li>
+	<li>Lactose (from Milk)</li>
+	<li>Butterfat (from Milk)</li>
+	<li>Emulsifiers (Lecithins, E471)</li>
+	<li>Whole Wheat Flour</li>
+	<li>Rice Flour</li>
+	<li>Raising Agents (Calcium Carbonate, Ammonium Bicarbonate, Sodium Bicarbonate)</li>
+	<li>Salt</li>
+	<li>Barley Malt Extract</li>
+	<li>Flavouring</li>
+	<li>Milk Chocolate contains Vegetable Fat in addition to Cocoa Butter</li>
+</ul>
+
+<div id="allergan-info">
+<h5>Allergy Information</h5>
+<span>Contains</span> : <span>Barley</span></div>
+
+	
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+  </div>
+  <div id="footer">
+    <div class="wrapper">
+        <div>
+      
+						<div class="ftr-text font-3"><strong><em>© Nestlé 2021 ® Reg. Trademark of Société des Produits Nestlé S.A</em></strong></div>
+
+			
+  
+<div class="footer-menu">
+			    <ul>
+			        <li>
+					<a href="https://www.nestle.co.uk/en-gb/termsandconditions" target="_blank">Terms &amp; Conditions</a>
+					        </li>
+			        <li>
+					<a href="https://www.nestle.co.uk/en-gb/privacypolicy" target="_blank">Privacy Policy</a>
+					        </li>
+			        <li>
+					<a href="http://www.nestle.co.uk/" target="_blank">Visit Nestlé.co.uk</a>
+					        </li>
+			        <li>
+					<a href="https://www.nestle.co.uk/en-gb/cookies" target="_blank">Cookie Policy</a>
+					        </li>
+			    </ul>
+	
+</div>
+
+
+<div id="block-footerlogo" data-block-plugin-id="block_content:8314ceb3-096e-4cca-8c55-6d0884b4b01d">
+  
+    
+      
+						<div class="ftr-logo">
+<div alt="Kitkat Break Logo" data-embed-button="media_browser" data-entity-embed-display="media_image" data-entity-type="media" data-entity-uuid="e6c2df50-68e7-422e-84ec-4fa44528a48b" data-langcode="en" title="Kitkat Break Logo" class="embedded-entity">  <img src="./COLLECTION_files/break-logo_0.png" alt="Kitkat Break Logo" title="Kitkat Break Logo" typeof="foaf:Image">
+
+</div>
+
+</div>
+
+			
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+</div>
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/60","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"datalayer\/ajax,datalayer\/behaviors,dsu_c_core\/general,dsu_c_image\/general,dsu_c_sideimagetext\/general,dsu_c_text\/general,dsu_product\/dsu-product,gigya\/drupalGigya,gigya_raas\/gigyaRaas,ln_adimo\/adimo-cookie-consent,ln_adimo\/multitouchpoint,ln_c_social_buttons\/social-buttons,ln_promotheus\/style,paragraphs\/drupal.paragraphs.unpublished,poll\/drupal.poll-links,prag_hero_carousel\/hero-carousel,pws_custom_poll\/general,pws_kitkat\/bites,pws_kitkat\/fonts,pws_kitkat\/global-styling,pws_kitkat\/kitkat-chunky,pws_kitkat\/kitkat-zebra,pws_kitkat\/minihub,pws_kitkat_custom\/general,pws_kitkat_page_selector\/general,system\/base","theme":"pws_kitkat","theme_token":null},"ajaxTrustedUrl":[],"dataLayer":{"defaultLang":"en","languages":{"en":{"id":"en","name":"English","direction":"ltr","weight":0}}},"gigya":{"globalParameters":{"bypassCookiePolicy":"never","enabledProviders":"*","sessionExpiration":-1,"rememberSessionExpiration":null},"apiKey":"3_TYkSq_exi4SI5189bo44zElhkm-3vmKdN-6sRicQRTZagan2poak-5WgSGtUtj3p","dataCenter":"eu1.gigya.com","lang":"en","enableRaaS":true,"raas":{"login":{"screenSet":"kitkat.co.uk-1-LiteRegistration","mobileScreenSet":"","startScreen":"gigya-login-screen","sessionExpiration":-1,"rememberSessionExpiration":null,"include":"id_token"},"register":{"screenSet":"kitkat.co.uk-1-LiteRegistration","mobileScreenSet":"","startScreen":"gigya-register-screen","sessionExpiration":-1,"rememberSessionExpiration":null,"include":"id_token"},"customScreenSets":[{"id":"gigya_raas_custom_screenset","label":"Gigya RaaS Custom Screen-Set","provider":"gigya_raas","label_display":"0","display_type":"embed","desktop_screenset":"kitkat.co.uk-1-LiteRegistration","container_id":"registration-container","link_id":"","link_class":"","sync_data":0,"mobile_screenset":"kitkat.co.uk-1-LiteRegistration"},{"id":"gigya_raas_custom_screenset","label":"Gigya RaaS Custom Screen-Set","provider":"gigya_raas","label_display":"0","display_type":"embed","desktop_screenset":"kitkat.co.uk-1-LiteRegistration","container_id":"registration-container","link_id":"","link_class":"","sync_data":0,"mobile_screenset":"kitkat.co.uk-1-LiteRegistration"}]}},"gigyaExtra":{"loginRedirect":"\/","logoutRedirect":"\/","isLogin":false,"session_type":"dynamic","session_time":"1800","remember_me_session_time":"1800"},"ajax":[],"user":{"uid":0,"permissionsHash":"88e68aa3a80d21b07db344ec06f01813ca9403f56216dbb09f28f016ee4e8f1e"}}</script>
+<script src="./COLLECTION_files/js_SuOJpES1VsAWzMNN31UPDJmNwp49e8ezMP1wlv895ag.js.download"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-11a2b90520ac674a8a0","applicationID":"840103234","transactionName":"ZlQHZhdXX0MABUdZC18eJFERX15eThZSVwFuUgRRDVM=","queueTime":0,"applicationTime":19,"atts":"ShMEEF9NTE0=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+
+<script type="text/javascript" id="" src="./COLLECTION_files/d181f4c05f6011ea8c7d0aa0fb419627.js.download"></script><script type="text/javascript" id="">(function(f){function a(c,d,e){var b=document,a="script",g=b.getElementsByTagName(a)[0];g||(g=b.head);b=b.createElement(a);b.async=e;b.id=c;b.src=d;b.charset="utf-8";g.parentNode.insertBefore(b,g)}function l(){var c=window.location.hostname.split(".");if(2===c.length)d=c[0];else if(2<c.length){var a=c[c.length-2];var e=a;var b="co com info web info gov edu biz net org".split(" "),f="uk us fr es de at au ae be br ca ch cn co cz dk eg eu fi gb gr hk hr hu ie in jp mx nl no nz pl ro ru se".split(" ");
+d=(e=-1!==b.indexOf(e)||-1!==f.indexOf(e))?c[c.length-3]:a}return d}window.evidon={};window.evidon.id=f;window.evidon.test=!1;var k="//c.evidon.com/",d=l(),h=k+"sitenotice/";a("evidon-notice",h+"evidon-sitenotice-tag.js",!1);a("evidon-location",k+"geo/country.js",!0);a("evidon-themes",h+f+"/snthemes.js",!0);d&&a("evidon-settings",h+f+"/"+d+(window.evidon.test?"/test":"")+"/settings.js",!0);window.evidon.priorConsentCallback=function(a,d,e){};window.evidon.closeCallback=function(){};window.evidon.consentWithdrawnCallback=
+function(){};window.evidon.consentDeclinedCallback=function(){window.evidon.notice.dropSuppressionCookie(365)}})(6367);</script><script type="text/javascript" id="">dataLayer.push({event:"globalCMTrigger",pageInformation:{pageCategory:"undefined",pageName:"undefined",pageSection:"undefined",pageSubsection:"undefined",pageType:"undefined"},siteInformation:{zone:"EMENA",country:"United Kingdom",business:"Confectionery",brand:"Kit Kat",language:"English",technology:"HTML",properties:"Brand",siteName:"KitKat United Kingdom",
+siteType:"Site",digiPiID:"415",conversionPageType:"undefined"},doubleClickData:{floodlightAdvertiserID:"9253405",hasEcommerce:"False",hasLogin:"False",hasSignup:"False",hasCouponPrint:"False",hasCheckout:"False",funnelStepName:"Checkout - Onepage",conversionPageType:"undefined",countGroupTagString:"count0",salesGroupTagString:"sales0"},
+userData:{accountType:"undefined",gaClientID:"undefined",optin:"undefined",userID:"undefined",userType:"undefined",deviceType:"undefined"}});</script>  <iframe title="Api Service" aria-hidden="true" src="./COLLECTION_files/Api.html" style="position: absolute; height: 0px; width: 0px; display: none;"></iframe><div id="_evh-button" class="evidon-consent-button" role="button" style="display: block;"><style> @media print {#_evh-ric,#_evh-link { display:none !important; } } </style><a id="_evh-link" tabindex="0" style="position: fixed; padding: 0.5em 0.75em; border: 0px solid transparent; cursor: pointer; line-height: 1.5; text-decoration: none; background: rgb(0, 0, 0); font-size: 11px; color: rgb(255, 255, 255); z-index: 2147483600; bottom: 0px; right: 1em; font-family: sans-serif;"><span id="_evidon-button-text" class="evidon-consent-button-text" style="vertical-align: middle !important;">Privacy settings</span><img id="_evh-newvendor-indicator" src="./COLLECTION_files/evidon-change-alert.png" alt="New vendors have been added to this site" style="display: none; position: absolute; left: -10px; top: -10px; width: 23px; height: 23px;"></a></div></body></html>
